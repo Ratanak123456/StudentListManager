@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/output.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/output.css">
+  <link rel="stylesheet" href="./src/input.css">
+
+  <title>Document</title>
 </head>
-<body>
-    
+
+<body class="bg-gray-100 min-h-screen p-4 flex items-center justify-center">
+  <main class="w-full max-w-4xl">
+    <section class="bg-white shadow-xl rounded-2xl p-6 md:p-8 space-y-6" aria-labelledby="app-title">
+
+      <!-- Title inside main -->
+      <h1 id="app-title" class="text-2xl md:text-3xl font-bold flex items-center gap-2">
+        🎓 Student List Manager
+      </h1>
+
+      <!-- Add Student -->
+      <section aria-label="Add Student Form" class="flex flex-col sm:flex-row gap-3">
+        <input id="nameInput" type="text" placeholder="Student Name"
+          class="input-blue flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" />
+        <input id="gradeInput" type="text" placeholder="Grade (A, B, C, D, F)"
+          class="input-blue flex-1 px-4 py-2 border rounded-md uppercase " />
+        <button onclick="addStudent()" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+          + Add
+        </button>
+      </section>
+
+      <!-- Filter Section -->
+      <section aria-label="Filter Student Form" class="flex flex-col sm:flex-row gap-3">
+        <input id="filterInput" type="text" placeholder="Filter by Grade"
+          class="input-purple flex-1 px-4 py-2 border rounded-md" />
+        <button onclick="filterStudents()"
+          class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition">
+          🔍 Filter
+        </button>
+        <button onclick="resetFilter()" class="bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-400 transition">
+          Reset
+        </button>
+      </section>
+
+      <!-- Student List -->
+      <section aria-labelledby="student-list-heading">
+        <h2 id="student-list-heading" class="text-xl font-semibold mb-3">📋 Students</h2>
+        <div id="studentList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Dynamic student <article>s appear here -->
+        </div>
+      </section>
+
+      <!-- Footer for Total Count -->
+      <footer>
+        <p id="totalCount" class="mt-4 text-sm text-gray-700">Total Students: 0</p>
+      </footer>
+
+    </section>
+  </main>
+  <script src="./src/JavaScript/main.js"></script>
 </body>
+
 </html>
