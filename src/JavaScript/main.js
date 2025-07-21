@@ -11,13 +11,13 @@ function renderStudents(list) {
   container.innerHTML = list
     .map(
       (student, index) => `
-    <article class="border-l-4 border-blue-500 p-4 bg-gray-50 rounded shadow" aria-label="Student ${
-      index + 1
-    }">
-      <p class="font-bold">${index + 1}. ${student.name}</p>
-      <p class="text-sm text-gray-600">Grade: ${student.grade}</p>
-    </article>
-  `
+        <article class="border-l-4 border-blue-500 p-4 bg-gray-50 rounded shadow" aria-label="Student ${
+          index + 1
+        }">
+          <p class="font-bold">${index + 1}. ${student.name}</p>
+          <p class="text-sm text-gray-600">Grade: ${student.grade}</p>
+        </article>
+      `
     )
     .join("");
 
@@ -27,17 +27,14 @@ function renderStudents(list) {
 }
 
 function addStudent() {
-  const name = document.getElementById("nameInput").value.trim();
-  const grade = document
-    .getElementById("gradeInput")
-    .value.trim()
-    .toUpperCase();
+  let name = document.getElementById("nameInput").value;
+  let grade = document.getElementById("gradeInput").value.toUpperCase();
 
-  const validGrades = ["A", "B", "C", "D", "F"];
-  const nameHasNumber = /\d/.test(name);
+  let validGrades = ["A", "B", "C", "D", "F"];
+  let nameHasNumber = /\d/.test(name);
 
-  // Check for duplicates (case-insensitive)
-  const isDuplicate = students.some(
+  // Check for duplicates name
+  let isDuplicate = students.some(
     (student) => student.name.toLowerCase() === name.toLowerCase()
   );
 
@@ -67,13 +64,9 @@ function addStudent() {
   renderStudents(students);
 }
 
-
 function filterStudents() {
-  const grade = document
-    .getElementById("filterInput")
-    .value.trim()
-    .toUpperCase();
-  const validGrades = ["A", "B", "C", "D", "F"];
+  let grade = document.getElementById("filterInput").value.toUpperCase();
+  let validGrades = ["A", "B", "C", "D", "F"];
 
   if (!validGrades.includes(grade)) {
     alert("Invalid filter grade. Use A, B, C, D, or F.");
@@ -89,7 +82,5 @@ function resetFilter() {
   renderStudents(students);
 }
 
-// Show initial students on load
-window.onload = () => {
-  renderStudents(students);
-};
+//Display initial students
+renderStudents(students);
